@@ -16,7 +16,8 @@ public class RationalNumber implements RationalNumberInterface {
     private int denominator;
 
     /**
-     * Creates a new {@link RationalNumber} with a {@link #numerator} of 0 and a {@link #denominator} of 1.
+     * Creates a new {@link RationalNumber} with a {@link #numerator} of 0 and a
+     * {@link #denominator} of 1.
      */
     public RationalNumber() {
         this.numerator = 0;
@@ -24,10 +25,14 @@ public class RationalNumber implements RationalNumberInterface {
     }
 
     /**
-     * Creates a new {@link RationalNumber} with a specified {@link #numerator} and {@link #denominator}.
+     * Creates a new {@link RationalNumber} with a specified {@link #numerator} and
+     * {@link #denominator}.
+     * 
      * @param n An integer value will be assigned to the {@link #numerator}
-     * @param d An integer value that will be assigned to the {@link #denominator}.  Cannot be equal to 0.
-     * @throws IllegalArgumentException Thrown if the specified {@link #denominator} equals 0.
+     * @param d An integer value that will be assigned to the {@link #denominator}.
+     *          Cannot be equal to 0.
+     * @throws IllegalArgumentException Thrown if the specified {@link #denominator}
+     *                                  equals 0.
      */
     public RationalNumber(int n, int d) throws IllegalArgumentException {
         this.numerator = n;
@@ -39,8 +44,11 @@ public class RationalNumber implements RationalNumberInterface {
     }
 
     /**
-     * Creates a new {@link RationalNumber} with the same {@link #numerator} and {@link #denominator} as a specified {@link RationalNumber}.
-     * @param nrn The {@link RationalNumber} to copy the {@link #numerator} and {@link #denominator} from.
+     * Creates a new {@link RationalNumber} with the same {@link #numerator} and
+     * {@link #denominator} as a specified {@link RationalNumber}.
+     * 
+     * @param nrn The {@link RationalNumber} to copy the {@link #numerator} and
+     *            {@link #denominator} from.
      */
     public RationalNumber(RationalNumber nrn) {
         this.numerator = nrn.getNumerator();

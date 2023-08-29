@@ -41,6 +41,10 @@ public class RationalNumber implements RationalNumberInterface {
         } else {
             this.denominator = d;
         }
+        if(this.denominator < 0){
+            this.denominator *= -1;
+            this.numerator *= -1;
+        }
     }
 
     /**

@@ -102,6 +102,19 @@ public class RationalNumber implements RationalNumberInterface {
             return Math.sqrt((double) this.numerator / (double) this.denominator);
         }
     }
+
+    @Override
+    public String toString() {
+        return this.numerator + " / " + this.denominator;
     }
-    
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof RationalNumberInterface) {
+            return this.numerator == ((RationalNumber) obj).getNumerator()
+                    && this.denominator == ((RationalNumber) obj).getDenominator();
+        }
+        return false;
+    }
+
 }

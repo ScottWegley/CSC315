@@ -71,26 +71,27 @@ public class RationalNumber implements RationalNumberInterface {
 
     @Override
     public RationalNumberInterface add(RationalNumberInterface rhs) {
-        // TODO Auto-generated method stub
-        return null;
+        return new RationalNumber(this.numerator * rhs.getDenominator() + this.denominator * rhs.getNumerator(),
+                this.denominator * rhs.getDenominator());
     }
 
     @Override
     public RationalNumberInterface sub(RationalNumberInterface rhs) {
-        // TODO Auto-generated method stub
-        return null;
+        return new RationalNumber(this.numerator * rhs.getDenominator() - this.denominator * rhs.getNumerator(),
+                this.denominator * rhs.getDenominator());
     }
 
     @Override
     public RationalNumberInterface mult(RationalNumberInterface rhs) {
-        // TODO Auto-generated method stub
-        return null;
+        return new RationalNumber(this.numerator * rhs.getNumerator(), this.denominator * rhs.getDenominator());
     }
 
     @Override
     public RationalNumberInterface div(RationalNumberInterface rhs) throws ArithmeticException {
-        // TODO Auto-generated method stub
-        return null;
+        if (rhs.getNumerator() == 0) {
+            throw new ArithmeticException("Divide by Zero Error");
+        }
+        return new RationalNumber(this.numerator * rhs.getDenominator(), this.denominator * rhs.getNumerator());
     }
 
     @Override

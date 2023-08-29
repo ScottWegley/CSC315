@@ -1,4 +1,4 @@
-package RationalNumber;
+package RationalNumbers;
 
 public interface RationalNumberInterface {
 

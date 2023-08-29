@@ -61,14 +61,12 @@ public class RationalNumber implements RationalNumberInterface {
 
     @Override
     public int getNumerator() {
-        // TODO Auto-generated method stub
-        return 0;
+        return numerator;
     }
 
     @Override
     public int getDenominator() {
-        // TODO Auto-generated method stub
-        return 0;
+        return denominator;
     }
 
     @Override

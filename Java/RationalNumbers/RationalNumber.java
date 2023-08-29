@@ -96,8 +96,12 @@ public class RationalNumber implements RationalNumberInterface {
 
     @Override
     public double sqrt() throws ArithmeticException {
-        // TODO Auto-generated method stub
-        return 0;
+        if (this.numerator < 0) {
+            throw new ArithmeticException("Divide by Zero Error");
+        } else {
+            return Math.sqrt((double) this.numerator / (double) this.denominator);
+        }
+    }
     }
     
 }

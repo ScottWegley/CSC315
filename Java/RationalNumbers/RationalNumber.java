@@ -54,7 +54,7 @@ public class RationalNumber implements RationalNumberInterface {
      * @param nrn The {@link RationalNumber} to copy the {@link #numerator} and
      *            {@link #denominator} from.
      */
-    public RationalNumber(RationalNumber nrn) {
+    public RationalNumber(RationalNumberInterface nrn) {
         this.numerator = nrn.getNumerator();
         this.denominator = nrn.getDenominator();
     }

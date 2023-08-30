@@ -41,7 +41,7 @@ public class RationalNumber implements RationalNumberInterface {
         } else {
             this.denominator = d;
         }
-        if(this.denominator < 0){
+        if (this.denominator < 0) {
             this.denominator *= -1;
             this.numerator *= -1;
         }
@@ -105,7 +105,15 @@ public class RationalNumber implements RationalNumberInterface {
 
     @Override
     public String toString() {
-        return this.numerator + " / " + this.denominator;
+        int tempNum = this.numerator;
+        int tempDen = this.denominator;
+        int prefix = 0;
+        while (tempNum >= tempDen) {
+            prefix++;
+            tempNum -= tempDen;
+        }
+        int gcd = eucGCD(tempNum, tempDen);
+        return ((prefix != 0 ? Integer.toString(prefix) + "  " : "")) + (tempNum == 0 ? "0" : (tempNum/gcd) + " / " + (tempDen/gcd));
     }
 
     @Override

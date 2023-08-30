@@ -117,4 +117,23 @@ public class RationalNumber implements RationalNumberInterface {
         return false;
     }
 
+    /**
+     * Loop implementation to find the greatest common denominator of two numbers.
+     * @param a The first number, must be smaller than b.
+     * @param b The second number, must be greater than a.
+     * @return The greatest common denominator of a and b.
+     */
+    private int eucGCD(int a, int b) {
+        if(a == 0){
+            return 1;
+        }
+        int temp = 0;
+        do {
+            temp = b % a;
+            b = a;
+            a = temp;
+        } while (temp != 0);
+        return b;
+    }
+
 }

@@ -38,13 +38,13 @@ public class RationalNumber implements RationalNumberInterface {
         this.numerator = n;
         if (d == 0) {
             throw new IllegalArgumentException("Divide by Zero Error");
-        } else {
-            this.denominator = d;
         }
-        if (this.denominator < 0) {
-            this.denominator *= -1;
-            this.numerator *= -1;
+        if(d < 0){
+            d = d * -1;
+            n = n * -1;
         }
+        this.denominator = d;
+        this.numerator = n;
     }
 
     /**
@@ -132,6 +132,8 @@ public class RationalNumber implements RationalNumberInterface {
      * @return The greatest common denominator of a and b.
      */
     private int eucGCD(int a, int b) {
+        a = Math.abs(a);
+        b = Math.abs(b);
         if(a == 0){
             return 1;
         }
@@ -142,6 +144,11 @@ public class RationalNumber implements RationalNumberInterface {
             a = temp;
         } while (temp != 0);
         return b;
+    }
+
+    public static void main(String[] args) {
+        RationalNumber rhs = new RationalNumber(1,-4);
+        System.out.println(rhs);
     }
 
 }

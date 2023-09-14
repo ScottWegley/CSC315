@@ -6,28 +6,28 @@
 
 using namespace std;
 
-class RationalNumber {
+class RationalNumber
+{
 
 public:
-RationalNumber();
-RationalNumber(int n, int d);
-RationalNumber(const RationalNumber &nrn);
-~RationalNumber();
+    RationalNumber(int n = 0, int d = 1);
+    RationalNumber(const RationalNumber &nrn);
+    ~RationalNumber();
 
-int getNumerator();
-int getDenominator();
+    int getNumerator() const;
+    int getDenominator() const;
 
-RationalNumber add(const RationalNumber &rhs);
-RationalNumber sub(const RationalNumber &rhs);
-RationalNumber mult(const RationalNumber &rhs);
-RationalNumber div(const RationalNumber &rhs);
-double sqrt();
-string toString();
-bool equals(const RationalNumber &rhs);
+    RationalNumber add(const RationalNumber &rhs) const;
+    RationalNumber sub(const RationalNumber &rhs) const;
+    RationalNumber mult(const RationalNumber &rhs) const;
+    RationalNumber div(const RationalNumber &rhs) const;
+    double sqrt() const;
+    string toString() const;
+    bool equals(const RationalNumber &rhs) const;
 
 private:
-int numerator;
-int denominator;
+    int numerator;
+    int denominator;
 
-int eucGCD(int a, int b);
+    int eucGCD(int a, int b) const;
 };

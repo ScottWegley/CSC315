@@ -24,6 +24,8 @@ public:
     double sqrt() const;
     string toString() const;
     bool equals(const RationalNumber &rhs) const;
+    void setNumerator(int _n);
+    void setDenominator(int _d);
 
 private:
     int numerator;

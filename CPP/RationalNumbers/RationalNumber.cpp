@@ -1,5 +1,6 @@
 
 #include "RationalNumber.h"
+#include <cmath>
 
 using namespace std;
 
@@ -56,16 +57,63 @@ double RationalNumber::sqrt() const
     }
 }
 
+string RationalNumber::toString() const
+{
+    int tempNum = this->numerator;
+    int tempDen = this->denominator;
+    int prefix = 0;
+    while (tempNum >= tempDen)
+    {
+        prefix++;
+        tempNum -= tempDen;
+    }
+    int gcd = eucGCD(tempNum, tempDen);
+    return ((prefix != 0 ? to_string(prefix) + "   " : "")) + (tempNum == 0 ? "0" : to_string(tempNum / gcd) + " / " + to_string(tempDen / gcd));
 }
 
-RationalNumber RationalNumber::add(const RationalNumber &rhs){
-    return RationalNumber(this->numerator * rhs.denominator + this->denominator * rhs.numerator, this->denominator * rhs.denominator);
+bool RationalNumber::equals(const RationalNumber &rhs) const
+{
+    return this->numerator == rhs.getNumerator() && this->denominator == rhs.getDenominator();
 }
 
-int RationalNumber::getNumerator(){
+int RationalNumber::getNumerator() const
+{
     return this->numerator;
 }
 
-int RationalNumber::getDenominator(){
+int RationalNumber::getDenominator() const
+{
     return this->denominator;
+}
+
+RationalNumber::~RationalNumber()
+{
+}
+
+void RationalNumber::setNumerator(int _n){
+    this->numerator = _n;
+    return;
+}
+
+void RationalNumber::setDenominator(int _d){
+    this->denominator = _d;
+    return;
+}
+
+int RationalNumber::eucGCD(int a, int b) const
+{
+    a = std::abs(a);
+    b = std::abs(b);
+    if (a == 0)
+    {
+        return 1;
+    }
+    int temp = 0;
+    do
+    {
+        temp = b % a;
+        b = a;
+        a = temp;
+    } while (temp != 0);
+    return b;
 }

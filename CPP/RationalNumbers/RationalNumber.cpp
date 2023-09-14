@@ -96,6 +96,9 @@ void RationalNumber::setNumerator(int _n){
 }
 
 void RationalNumber::setDenominator(int _d){
+    if(_d == 0){
+        throw "Denominator cannot equal 0.";
+    }
     this->denominator = _d;
     return;
 }

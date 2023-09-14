@@ -4,7 +4,7 @@
 
 using namespace std;
 
-RationalNumber::RationalNumber(int n = 0, int d = 0)
+RationalNumber::RationalNumber(int n, int d)
     : numerator(n), denominator(d)
 {
     if (d == 0)

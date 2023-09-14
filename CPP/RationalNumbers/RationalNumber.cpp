@@ -3,9 +3,23 @@
 
 using namespace std;
 
-RationalNumber::RationalNumber()
-: numerator(0), denominator(0) {
+RationalNumber::RationalNumber(int n = 0, int d = 0)
+    : numerator(n), denominator(d)
+{
+    if (d == 0)
+    {
+        throw "The denominator cannot be 0.";
+    }
+    if (d < 0)
+    {
+        this->numerator *= -1;
+        this->denominator *= -1;
+    }
+}
 
+RationalNumber::RationalNumber(const RationalNumber &nrn)
+    : numerator(nrn.numerator), denominator(nrn.denominator)
+{
 }
 
 RationalNumber::RationalNumber(int n, int d)

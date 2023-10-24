@@ -1,8 +1,8 @@
 package ComplexNumber;
 
 class ComplexNumber {
-    private double real;
-    private double imag;
+    protected double real;
+    protected double imag;
 
     public ComplexNumber() {
         this(0, 0);
@@ -35,7 +35,7 @@ class ComplexNumber {
     }
 
     public String toString() {
-        return real + (imag < 0 ? " - " : " + ") + imag + "i";
+        return real + (imag == 0 ? "" : (imag < 0 ? " - " : " + ") + (imag < 0 ? imag * -1 : imag) + "i");
     }
 
     public ComplexNumber add(ComplexNumber rhs) {

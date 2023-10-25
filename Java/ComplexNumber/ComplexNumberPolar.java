@@ -5,10 +5,11 @@ public class ComplexNumberPolar extends ComplexNumber {
     private double theta;
 
     public static void main(String[] args) {
-        ComplexNumber c = new ComplexNumber(Math.sqrt(3),-1);
-        ComplexNumberPolar p = new ComplexNumberPolar(c);
-        System.out.println(c);
-        System.out.println(p);
+        ComplexNumberPolar lhs = new ComplexNumberPolar(-8,0);
+        // ComplexNumberPolar rhs = new ComplexNumberPolar(Math.sqrt(3),-1);
+        System.out.println(lhs.toString());
+        // System.out.println(rhs.toString());
+        System.out.println(lhs.roots(6));
     }
 
     public ComplexNumberPolar() {
@@ -51,19 +52,26 @@ public class ComplexNumberPolar extends ComplexNumber {
         return super.toString() + " : " + radius + "(cos(" + theta + ") + isin(" + theta + "))";
     }
 
-    // public ComplexNumberPolar mult(ComplexNumberPolar rhs){
+    public ComplexNumberPolar mult(ComplexNumberPolar rhs){
+        return new ComplexNumberPolar(((ComplexNumber)this).mult((ComplexNumber)rhs));
+    }
 
-    // }
+    public ComplexNumberPolar div(ComplexNumberPolar rhs){
+        return new ComplexNumberPolar(((ComplexNumber)this).div((ComplexNumber)rhs));
+    }
 
-    // public ComplexNumberPolar div(ComplexNumberPolar rhs){
+    @Override
+    public ComplexNumberPolar pow(int i){
+        return new ComplexNumberPolar(new ComplexNumber((ComplexNumber)this).pow(i));
+    }
 
-    // }
-
-    // public ComplexNumberPolar pow(int i){
-
-    // }
-
-    // public ComplexNumberPolar[] roots(int i){
-
-    // }
+    public ComplexNumberPolar[] roots(int i){
+        ComplexNumberPolar[] out = new ComplexNumberPolar[i];
+        double reduced = Math.pow(radius, ((double)1)/i);
+        System.out.println(reduced);
+        for (int j = 0; j < i; j++) {
+            out[j] = new ComplexNumberPolar(new ComplexNumber());;
+        }
+        return out;
+    }
 }

@@ -62,6 +62,14 @@ class ComplexNumber {
                         / (rhs.getReal() * rhs.getReal() + rhs.getImag() * rhs.getImag()));
     }
 
+    public ComplexNumber pow(int i){
+        ComplexNumber out = new ComplexNumber(1,0);
+        for (int j = 0; j < i; j++) {
+            out = out.mult(this);
+        }
+        return out;
+    }
+
     public double mag() {
         return Math.sqrt(this.getReal() * this.getReal() + this.getImag() * this.getImag());
     }
@@ -93,5 +101,10 @@ class ComplexNumber {
             return ((ComplexNumber) o).getReal() == this.getReal() && ((ComplexNumber) o).getImag() == this.getImag();
         }
         return false;
+    }
+
+    public static void main(String[] args) {
+        ComplexNumber c = new ComplexNumber(2,0);
+        System.out.println(c.pow(3));
     }
 }

@@ -68,9 +68,8 @@ public class ComplexNumberPolar extends ComplexNumber {
     public ComplexNumberPolar[] roots(int i){
         ComplexNumberPolar[] out = new ComplexNumberPolar[i];
         double reduced = Math.pow(radius, ((double)1)/i);
-        System.out.println(reduced);
         for (int j = 0; j < i; j++) {
-            out[j] = new ComplexNumberPolar(new ComplexNumber());;
+            out[j] = new ComplexNumberPolar(new ComplexNumber(reduced * Math.cos((this.theta + (2*j*Math.PI)/i)), reduced * Math.sin((this.theta + (2*j*Math.PI)/i))));
         }
         return out;
     }

@@ -77,13 +77,21 @@ bool RationalNumberArray::equals(const RationalNumberArray &rhs) const {}
 double RationalNumberArray::getMean() const {}
 // -- returns the standard deviation as a double
 double RationalNumberArray::getStdDev() const {}
-int RationalNumberArray::getRows() const {}
-int RationalNumberArray::getCols() const {}
+int RationalNumberArray::getRows() const
+{
+    return this->rows;
+}
+int RationalNumberArray::getCols() const
+{
+    return this->cols;
+}
 // -- set cell value
-void RationalNumberArray::setCell(int row, int col, const RationalNumber &value) {
-    this->data[row][col] = value; 
+void RationalNumberArray::setCell(int row, int col, const RationalNumber &value)
+{
+    this->data[row][col] = value;
 }
 
-RationalNumber RationalNumberArray::getCell(int row, int col) const {
+RationalNumber RationalNumberArray::getCell(int row, int col) const
+{
     return this->data[row][col];
 }

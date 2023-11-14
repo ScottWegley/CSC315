@@ -32,4 +32,5 @@ public:
     int getCols() const;
     // -- set cell value
     void setCell(int row, int col, RationalNumber &value);
+    RationalNumber getCell(int row, int col) const;
 };

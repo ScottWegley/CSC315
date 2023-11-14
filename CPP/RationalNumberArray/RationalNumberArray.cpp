@@ -35,12 +35,18 @@ RationalNumberArray::RationalNumberArray(int rows, int cols) : rows(rows), cols(
         }
         for (int j = 0; j < cols; j++)
         {
-            this->data[i][j] = RationalNumber(j + i * cols + 1, 1);
+            this->data[i][j] = RationalNumber(0, 1);
         }
     }
 }
 
-RationalNumberArray::RationalNumberArray(const RationalNumberArray &rhs) {}
+RationalNumberArray::RationalNumberArray(const RationalNumberArray &rhs):RationalNumberArray(rhs.rows,rhs.cols) {
+    for(int i = 0; i < rhs.rows; i++){
+        for(int j = 0; j < rhs.cols; j++){
+            this->data[i][j] = rhs.getCell(i,j);
+        }
+    }
+}
 
 RationalNumberArray::~RationalNumberArray()
 {
@@ -59,3 +65,7 @@ int RationalNumberArray::getRows() const {}
 int RationalNumberArray::getCols() const {}
 // -- set cell value
 void RationalNumberArray::setCell(int row, int col, RationalNumber &value) {}
+
+RationalNumber RationalNumberArray::getCell(int row, int col) const {
+    return this->data[row][col];
+}

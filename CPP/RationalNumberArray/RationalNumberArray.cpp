@@ -1,6 +1,13 @@
 #include "RationalNumberArray.h"
+#include <iostream>
 
 using namespace std;
+
+int main(int argc, char **argv)
+{
+    cout << "Test\n";
+    return 0;
+}
 
 RationalNumberArray::RationalNumberArray(int rows, int cols) : rows(rows), cols(cols)
 {
@@ -32,3 +39,8 @@ RationalNumberArray::RationalNumberArray(int rows, int cols) : rows(rows), cols(
     }
 }
 
+
+RationalNumberArray::~RationalNumberArray(){
+    delete[] this->data[0];
+    delete[] this->data;
+}

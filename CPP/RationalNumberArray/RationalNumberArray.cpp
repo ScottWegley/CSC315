@@ -39,8 +39,22 @@ RationalNumberArray::RationalNumberArray(int rows, int cols) : rows(rows), cols(
     }
 }
 
+RationalNumberArray::RationalNumberArray(const RationalNumberArray &rhs) {}
 
-RationalNumberArray::~RationalNumberArray(){
+RationalNumberArray::~RationalNumberArray()
+{
     delete[] this->data[0];
     delete[] this->data;
 }
+
+string RationalNumberArray::toString() {}
+
+bool RationalNumberArray::equals(const RationalNumberArray &rhs) const {}
+
+double RationalNumberArray::getMean() const {}
+// -- returns the standard deviation as a double
+double RationalNumberArray::getStdDev() const {}
+int RationalNumberArray::getRows() const {}
+int RationalNumberArray::getCols() const {}
+// -- set cell value
+void RationalNumberArray::setCell(int row, int col, RationalNumber &value) {}

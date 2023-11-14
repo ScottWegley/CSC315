@@ -6,6 +6,7 @@ using namespace std;
 int main(int argc, char **argv)
 {
     cout << "Test\n";
+    RationalNumberArray rna = RationalNumberArray(3, 5);
     return 0;
 }
 

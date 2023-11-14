@@ -69,7 +69,7 @@ string RationalNumber::toString() const
         tempNum -= tempDen;
     }
     int gcd = eucGCD(tempNum, tempDen);
-    return ((prefix != 0 ? to_string(prefix) + "   " : "")) + (tempNum == 0 ? "0" : to_string(tempNum / gcd) + " / " + to_string(tempDen / gcd));
+    return ((prefix != 0 ? to_string(prefix) + "  " : "")) + (tempNum == 0 ? "0" : to_string(tempNum / gcd) + " / " + to_string(tempDen / gcd));
 }
 
 bool RationalNumber::equals(const RationalNumber &rhs) const

@@ -7,6 +7,13 @@ int main(int argc, char **argv)
 {
     cout << "Test\n";
     RationalNumberArray rna = RationalNumberArray(3, 5);
+    cout << rna.toString();
+    rna.setCell(0,0, RationalNumber(5,3));
+    cout << "Change\n";
+    cout << rna.toString();
+    cout << "Copy\n";
+    RationalNumberArray nrna = RationalNumberArray(rna);
+    cout << nrna.toString();
     return 0;
 }
 
@@ -54,7 +61,16 @@ RationalNumberArray::~RationalNumberArray()
     delete[] this->data;
 }
 
-string RationalNumberArray::toString() {}
+string RationalNumberArray::toString() {
+    string out = "";
+    for(int i = 0; i < this->rows; i++){
+        for(int j = 0; j < this->rows;j++){
+            out = out + this->data[i][j].toString() + "\t";
+        }
+        out = out + '\n';
+    }
+    return out;
+}
 
 bool RationalNumberArray::equals(const RationalNumberArray &rhs) const {}
 
@@ -64,7 +80,7 @@ double RationalNumberArray::getStdDev() const {}
 int RationalNumberArray::getRows() const {}
 int RationalNumberArray::getCols() const {}
 // -- set cell value
-void RationalNumberArray::setCell(int row, int col, RationalNumber &value) {
+void RationalNumberArray::setCell(int row, int col, const RationalNumber &value) {
     this->data[row][col] = value; 
 }
 

@@ -64,7 +64,9 @@ double RationalNumberArray::getStdDev() const {}
 int RationalNumberArray::getRows() const {}
 int RationalNumberArray::getCols() const {}
 // -- set cell value
-void RationalNumberArray::setCell(int row, int col, RationalNumber &value) {}
+void RationalNumberArray::setCell(int row, int col, RationalNumber &value) {
+    this->data[row][col] = value; 
+}
 
 RationalNumber RationalNumberArray::getCell(int row, int col) const {
     return this->data[row][col];

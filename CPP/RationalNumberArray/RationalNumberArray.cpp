@@ -8,12 +8,19 @@ int main(int argc, char **argv)
     cout << "Test\n";
     RationalNumberArray rna = RationalNumberArray(3, 5);
     cout << rna.toString();
-    rna.setCell(0,0, RationalNumber(5,3));
+    rna.setCell(0, 0, RationalNumber(5, 3));
     cout << "Change\n";
     cout << rna.toString();
     cout << "Copy\n";
     RationalNumberArray nrna = RationalNumberArray(rna);
     cout << nrna.toString();
+    cout << "Equals\n";
+    cout << nrna.equals(rna) << '\n';
+    nrna.setCell(1, 1, RationalNumber(2, 1));
+    cout << "Change\n";
+    cout << nrna.toString();
+    cout << "Equals\n";
+    cout << nrna.equals(rna) << '\n';
     return 0;
 }
 
@@ -47,10 +54,13 @@ RationalNumberArray::RationalNumberArray(int rows, int cols) : rows(rows), cols(
     }
 }
 
-RationalNumberArray::RationalNumberArray(const RationalNumberArray &rhs):RationalNumberArray(rhs.rows,rhs.cols) {
-    for(int i = 0; i < rhs.rows; i++){
-        for(int j = 0; j < rhs.cols; j++){
-            this->data[i][j] = rhs.getCell(i,j);
+RationalNumberArray::RationalNumberArray(const RationalNumberArray &rhs) : RationalNumberArray(rhs.rows, rhs.cols)
+{
+    for (int i = 0; i < rhs.rows; i++)
+    {
+        for (int j = 0; j < rhs.cols; j++)
+        {
+            this->data[i][j] = rhs.getCell(i, j);
         }
     }
 }
@@ -61,10 +71,13 @@ RationalNumberArray::~RationalNumberArray()
     delete[] this->data;
 }
 
-string RationalNumberArray::toString() {
+string RationalNumberArray::toString()
+{
     string out = "";
-    for(int i = 0; i < this->rows; i++){
-        for(int j = 0; j < this->rows;j++){
+    for (int i = 0; i < this->rows; i++)
+    {
+        for (int j = 0; j < this->rows; j++)
+        {
             out = out + this->data[i][j].toString() + "\t";
         }
         out = out + '\n';
@@ -72,7 +85,24 @@ string RationalNumberArray::toString() {
     return out;
 }
 
-bool RationalNumberArray::equals(const RationalNumberArray &rhs) const {}
+bool RationalNumberArray::equals(const RationalNumberArray &rhs) const
+{
+    if (this->rows != rhs.getRows() || this->cols != rhs.getCols())
+    {
+        return false;
+    }
+    for (int i = 0; i < rhs.getRows(); i++)
+    {
+        for (int j = 0; j < rhs.getCols(); j++)
+        {
+            if (!this->getCell(i, j).equals(rhs.getCell(i, j)))
+            {
+                return false;
+            }
+        }
+    }
+    return true;
+}
 
 double RationalNumberArray::getMean() const {}
 // -- returns the standard deviation as a double

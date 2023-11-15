@@ -3,27 +3,6 @@
 
 using namespace std;
 
-int main(int argc, char **argv)
-{
-    cout << "Test\n";
-    RationalNumberArray rna = RationalNumberArray(3, 5);
-    cout << rna.toString();
-    rna.setCell(0, 0, RationalNumber(5, 3));
-    cout << "Change\n";
-    cout << rna.toString();
-    cout << "Copy\n";
-    RationalNumberArray nrna = RationalNumberArray(rna);
-    cout << nrna.toString();
-    cout << "Equals\n";
-    cout << nrna.equals(rna) << '\n';
-    nrna.setCell(1, 1, RationalNumber(2, 1));
-    cout << "Change\n";
-    cout << nrna.toString();
-    cout << "Equals\n";
-    cout << nrna.equals(rna) << '\n';
-    return 0;
-}
-
 RationalNumberArray::RationalNumberArray(int rows, int cols) : rows(rows), cols(cols)
 {
     if (rows <= 0)
@@ -104,7 +83,18 @@ bool RationalNumberArray::equals(const RationalNumberArray &rhs) const
     return true;
 }
 
-double RationalNumberArray::getMean() const {}
+double RationalNumberArray::getMean() const
+{
+    double sum = 0;
+    for (int i = 0; i < this->rows; i++)
+    {
+        for (int j = 0; j < this->cols; j++)
+        {
+            sum += (double)this->data[i][j].getNumerator() / (double)this->data[i][j].getDenominator();
+        }
+    }
+    return sum / (this->rows * this->cols);
+}
 // -- returns the standard deviation as a double
 double RationalNumberArray::getStdDev() const {}
 int RationalNumberArray::getRows() const

@@ -1,5 +1,6 @@
 #include "RationalNumberArray.h"
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
@@ -35,9 +36,9 @@ RationalNumberArray::RationalNumberArray(int rows, int cols) : rows(rows), cols(
 
 RationalNumberArray::RationalNumberArray(const RationalNumberArray &rhs) : RationalNumberArray(rhs.rows, rhs.cols)
 {
-    for (int i = 0; i < rhs.rows; i++)
+    for (int i = 0; i < rhs.getRows(); i++)
     {
-        for (int j = 0; j < rhs.cols; j++)
+        for (int j = 0; j < rhs.getCols(); j++)
         {
             this->data[i][j] = rhs.getCell(i, j);
         }
@@ -53,9 +54,9 @@ RationalNumberArray::~RationalNumberArray()
 string RationalNumberArray::toString()
 {
     string out = "";
-    for (int i = 0; i < this->rows; i++)
+    for (int i = 0; i < getRows(); i++)
     {
-        for (int j = 0; j < this->rows; j++)
+        for (int j = 0; j < getCols(); j++)
         {
             out = out + this->data[i][j].toString() + "\t";
         }
@@ -66,7 +67,7 @@ string RationalNumberArray::toString()
 
 bool RationalNumberArray::equals(const RationalNumberArray &rhs) const
 {
-    if (this->rows != rhs.getRows() || this->cols != rhs.getCols())
+    if (getRows() != rhs.getRows() || getCols() != rhs.getCols())
     {
         return false;
     }
@@ -86,28 +87,48 @@ bool RationalNumberArray::equals(const RationalNumberArray &rhs) const
 double RationalNumberArray::getMean() const
 {
     double sum = 0;
-    for (int i = 0; i < this->rows; i++)
+    for (int i = 0; i < getRows(); i++)
     {
-        for (int j = 0; j < this->cols; j++)
+        for (int j = 0; j < getCols(); j++)
         {
-            sum += (double)this->data[i][j].getNumerator() / (double)this->data[i][j].getDenominator();
+            sum += (double)getCell(i, j).getNumerator() / (double)getCell(i, j).getDenominator();
         }
     }
-    return sum / (this->rows * this->cols);
+    return sum / (getRows() * getCols());
 }
 // -- returns the standard deviation as a double
-double RationalNumberArray::getStdDev() const {}
+double RationalNumberArray::getStdDev() const
+{
+    double mean = this->getMean();
+    double stdDev = 0;
+    for (int i = 0; i < getRows(); i++)
+    {
+        for (int j = 0; j < getCols(); j++)
+        {
+            double cNum = (double)getCell(i, j).getNumerator() / (double)getCell(i, j).getDenominator();
+            stdDev += pow(cNum - mean, 2);
+        }
+    }
+    return sqrt(stdDev / (getRows() * getCols()));
+}
+
 int RationalNumberArray::getRows() const
 {
     return this->rows;
 }
+
 int RationalNumberArray::getCols() const
 {
     return this->cols;
 }
+
 // -- set cell value
 void RationalNumberArray::setCell(int row, int col, const RationalNumber &value)
 {
+    if (row < 0 || col < 0)
+    {
+        throw "Cannot access a cell where one dimension is less than zero.";
+    }
     this->data[row][col] = value;
 }
 

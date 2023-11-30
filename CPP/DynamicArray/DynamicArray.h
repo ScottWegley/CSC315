@@ -1,4 +1,4 @@
-#pragma once
+#pragma DynamicArray
 
 #include <iostream>
 #include <string>

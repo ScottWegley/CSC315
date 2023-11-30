@@ -1,5 +1,5 @@
 #include <iostream>
-#include "DynamicArray.h"
+#include "DynamicArray.cpp"
 
 int main(int argc, char **argv)
 {
